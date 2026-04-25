@@ -41,6 +41,7 @@ def startup():
 
 @app.get("/api/health")
 def health():
+    """Verifica saúde do sistema e conexão com o banco."""
     return {"status": "ok", "db": "connected" if os.environ.get("DATABASE_URL") else "sqlite"}
 
 
