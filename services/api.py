@@ -29,8 +29,19 @@ app.add_middleware(
 
 @app.on_event("startup")
 def startup():
-    init_db()
-    seed()
+    try:
+        init_db()
+        # Não roda seed() na Vercel automaticamente para evitar timeouts e erros de escrita
+        if not os.environ.get("VERCEL"):
+            seed()
+        else:
+            print("Vercel detectada: pulando seed automático.")
+    except Exception as e:
+        print(f"Erro no startup: {e}")
+
+@app.get("/api/health")
+def health():
+    return {"status": "ok", "db": "connected" if os.environ.get("DATABASE_URL") else "sqlite"}
 
 
 @app.get("/api/dashboard")
