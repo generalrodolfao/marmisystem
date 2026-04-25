@@ -1,0 +1,20 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --verde-oliva: #4B5320;
+  --verde-militar: #3C4F3D;
+  --amarelo: #FFDF00;
+  --branco: #F5F5F0;
+  --cinza-escuro: #1a1f1a;
+  --cinza-medio: #2d352d;
+  --texto: #e8e8d8;
+}
+
+body {
+  background: var(--cinza-escuro);
+  color: var(--texto);
+  font-family: 'Courier New', monospace;
+  min-height: 100vh;
+}
+
+button { cursor: pointer; border: none; font-family: inherit; }
